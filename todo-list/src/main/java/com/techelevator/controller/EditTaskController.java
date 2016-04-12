@@ -28,15 +28,11 @@ public class EditTaskController {
 		this.taskDAO = taskDAO;
 	}
 	
-	
-	@RequestMapping(path="/editTask", method=RequestMethod.GET)
-	public List<Task> listTaskByUserId(Map<String, Object> model){
-		
-		User user = (User)model.get("user");
-		
-		
+	@RequestMapping(path="/edit", method=RequestMethod.GET)
+	public List<Task> listTasksByUserId(){
 		return taskDAO.getTaskByUserId(1);
 		
-		
 	}
+	
+	
 }

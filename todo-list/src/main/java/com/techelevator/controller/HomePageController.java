@@ -36,6 +36,15 @@ public class HomePageController {
 		return "homePage";
 	}
 	
+	@RequestMapping(path="/editTask", method=RequestMethod.GET)
+	public String displayEditTaskPage(Map<String, Object>model){
+		
+		
+		
+		return "editTask";
+		
+		
+	}
 	
 	
 	

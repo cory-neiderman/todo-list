@@ -35,12 +35,12 @@ public class LoginController{
 								@RequestParam(name="password") String password){
 		
 		if(userDAO.getUserIdByNameAndPassword(username, password) == null){
-			return "/";
+			return "redirect:/";
 		}
-		else
+		else{
 			model.put("user", userDAO.getUserIdByNameAndPassword(username, password));
-		
-		return "redirect:/homePage";	
+			return "redirect:/homePage";
+		}
 	}
 	
 }

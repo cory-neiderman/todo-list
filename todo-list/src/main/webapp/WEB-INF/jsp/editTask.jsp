@@ -3,19 +3,22 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="site.css" />
-    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
-    <script src="/todo-list/src/main/webapp/WEB-INF/jsp/script.js"></script>
+	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    	<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     
     <div>
-    	<h2>Available Tasks:</h2>
+    	<h2>Current Tasks:</h2>
     	
     	<ul id="taskList">
     	</ul>
     </div>
     
-    
+   
 </body>
 </html>

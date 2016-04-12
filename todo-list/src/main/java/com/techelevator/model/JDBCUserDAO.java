@@ -25,7 +25,7 @@ public class JDBCUserDAO implements UserDAO{
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForId, username, password);
 		
-		results.next();
+		if(results.next()){
 		
 	
 		
@@ -36,7 +36,9 @@ public class JDBCUserDAO implements UserDAO{
 		user.setUserId(results.getInt("user_id"));
 		
 		return user;
-		
+		}
+		else
+			return null;
 		
 	}
 
