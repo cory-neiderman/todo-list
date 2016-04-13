@@ -6,6 +6,6 @@ public interface TaskDAO {
 	
 	public void add(Task task);
 	public List<Task> getTaskByUserId(int userId);
-	//public List<Task> getTaskByCreator(String creatorName);
+	public void markTaskCompletedById(int taskId);
 
 }

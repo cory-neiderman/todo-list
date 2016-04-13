@@ -15,8 +15,19 @@
     <div>
     	<h2>Current Tasks:</h2>
     	
-    	<ul id="taskList">
+    	<table id="taskList">
+    		<tr>
+    			<th>Name</th>
+    			<th>Priority</th>
+    			<th>Due Date</th>
+    			<th>Is task Finished?</th>
+    		</tr>
+    	</table>
+    	
+    	<ul id="completedList">
+    	
     	</ul>
+    	
     </div>
     
    

@@ -51,14 +51,23 @@ public class JDBCTaskDAO implements TaskDAO{
 		while(results.next()){
 			Task task = new Task();
 			task.setDescription(results.getString("description"));
+			task.setTaskId(results.getInt("task_id"));
 			task.setPriority(results.getInt("priority"));
 			task.setDueDate(LocalDate.parse(results.getString("due_date")));
 			task.setNameOfCreator(results.getString("creator_name"));
 			task.setDateCreated(LocalDate.parse(results.getString("create_date")));
+			task.setIsCompleted(Boolean.valueOf(results.getString("is_completed")));
 			taskListByUserId.add(task);
 		}
 		
 		return taskListByUserId;
+	}
+
+	@Override
+	public void markTaskCompletedById(int taskId) {
+		
+		String sqlQueryUpdate = "UPDATE task SET is_completed ='true' WHERE task_id = ?";
+		jdbcTemplate.update(sqlQueryUpdate, taskId);
 	}
 
 
