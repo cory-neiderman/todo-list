@@ -19,17 +19,14 @@ $(document).ready(function () {
     });
 	
 	function populateTaskList(taskList) {
-		console.log("test2");
-		for(var i = 0; i < taskList.length; i++) {
+		console.log(taskList[1].description);
+		for(var i=0; i<taskList.length; i++){
+			//$("#taskList").append("<li>"+$(taskList[i])+"</li>")
+			$("#taskList").append("<li>"+taskList[i].description+"</li>");
 			
-					
-			$("#taskList").append($listItem.append(taskList.description));
+			
 		}
 	}
-	
-	
-	
-	
-	
+
 	
 });
