@@ -44,7 +44,7 @@ public class JDBCTaskDAO implements TaskDAO{
 		
 		List<Task> taskListByUserId = new ArrayList<>();
 		
-		String sqlQueryForTaskByUserId = "SELECT * FROM task WHERE user_id=?";
+		String sqlQueryForTaskByUserId = "SELECT * FROM task WHERE user_id=? ORDER BY priority, due_date, description";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlQueryForTaskByUserId, userId);
 		
@@ -66,8 +66,34 @@ public class JDBCTaskDAO implements TaskDAO{
 	@Override
 	public void markTaskCompletedById(int taskId) {
 		
-		String sqlQueryUpdate = "UPDATE task SET is_completed ='true' WHERE task_id = ?";
-		jdbcTemplate.update(sqlQueryUpdate, taskId);
+		String sqlQueryUpdateIsCompleted = "UPDATE task SET is_completed ='true' WHERE task_id = ?";
+		jdbcTemplate.update(sqlQueryUpdateIsCompleted, taskId);
+	}
+
+	@Override
+	public void changeTaskPriority(int taskId, int newPriority) {
+		
+		String sqlQueryUpdatePriority = "UPDATE task SET priority = ? WHERE task_id = ?";
+		jdbcTemplate.update(sqlQueryUpdatePriority, newPriority, taskId);
+		
+	}
+
+	@Override
+	public void changeDueDate(int taskId, String newDate) {
+		
+		
+		
+		String sqlQueryUpdateDueDate = "UPDATE task SET due_date = ? WHERE task_id = ?";
+		jdbcTemplate.update(sqlQueryUpdateDueDate, LocalDate.parse(newDate), taskId);
+		
+	}
+
+	@Override
+	public void removeTaskByDueDate(int taskId) {
+		
+		String sqlDeleteTask = "DELETE FROM task WHERE task_id = ?";
+		jdbcTemplate.update(sqlDeleteTask, taskId);
+		
 	}
 
 

@@ -41,7 +41,7 @@ public class EditTaskController {
 	}
 	
 	@RequestMapping(path="/editTask/edit/{taskId}", method=RequestMethod.POST)
-	public List<Task> listUpdatedTasks(Map<String, Object> model,
+	public List<Task> listTasksAfterCompleted(Map<String, Object> model,
 										@PathVariable int taskId){
 		
 		
@@ -51,6 +51,45 @@ public class EditTaskController {
 		return taskDAO.getTaskByUserId(user.getUserId());
 		
 	}
+	
+	@RequestMapping(path="/editTask/edit/{taskId}/1/{newPriority}", method=RequestMethod.POST)
+	public List<Task> listTasksAfterPriorityChange(Map<String, Object> model,
+										@PathVariable int taskId,
+										@PathVariable int newPriority){
+		
+		
+		taskDAO.changeTaskPriority(taskId, newPriority);
+		
+		User user = (User)model.get("user");
+		return taskDAO.getTaskByUserId(user.getUserId());
+		
+	}
+	
+	@RequestMapping(path="/editTask/edit/{taskId}/2/{newDate}", method=RequestMethod.POST)
+	public List<Task> listTasksAfterDueDateChange(Map<String, Object> model,
+										@PathVariable int taskId,
+										@PathVariable String newDate){
+		
+		
+		taskDAO.changeDueDate(taskId, newDate);
+		
+		User user = (User)model.get("user");
+		return taskDAO.getTaskByUserId(user.getUserId());
+		
+	}
+	@RequestMapping(path="/editTask/remove/{taskId}", method=RequestMethod.POST)
+	public List<Task> listTasksAfterRemove(Map<String, Object> model,
+										@PathVariable int taskId){
+		
+		
+		taskDAO.removeTaskByDueDate(taskId);
+		
+		User user = (User)model.get("user");
+		return taskDAO.getTaskByUserId(user.getUserId());
+		
+	}
+	
+	
 	
 	
 }
